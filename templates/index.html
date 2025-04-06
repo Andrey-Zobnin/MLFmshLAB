@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2 class="card-title mb-0">
+                    <i class="fas fa-camera me-2"></i>
+                    {{ _('Image Recognition') }}
+                </h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">{{ _('Upload an image and our AI will identify what\'s in the picture.') }}</p>
+                
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    {{ _('We use a pre-trained machine learning model to recognize common objects, animals, and scenes.') }}
+                </div>
+                
+                <div class="mb-4">
+                    <div class="upload-container text-center p-4 border rounded mb-3">
+                        <div id="preview-container" class="d-none mb-3">
+                            <img id="image-preview" class="img-fluid rounded mb-2" src="#" alt="{{ _('Preview') }}">
+                            <button id="remove-image" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-times me-1"></i>
+                                {{ _('Remove') }}
+                            </button>
+                        </div>
+                        
+                        <div id="upload-prompt">
+                            <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-secondary"></i>
+                            <p>{{ _('Drag and drop an image or click to browse') }}</p>
+                        </div>
+                        
+                        <input type="file" id="fileInput" class="d-none" accept="image/*">
+                        <button id="upload-button" class="btn btn-primary mt-2">
+                            <i class="fas fa-folder-open me-2"></i>
+                            {{ _('Browse Files') }}
+                        </button>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button id="submit-button" class="btn btn-success btn-lg" disabled>
+                            <i class="fas fa-search me-2"></i>
+                            {{ _('Analyze Image') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="results-container" class="card shadow-sm d-none">
+            <div class="card-header bg-success text-white">
+                <h3 class="card-title mb-0">
+                    <i class="fas fa-list-ol me-2"></i>
+                    {{ _('Recognition Results') }}
+                </h3>
+            </div>
+            <div class="card-body">
+                <div id="loading" class="text-center py-4 d-none">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">{{ _('Loading...') }}</span>
+                    </div>
+                    <p class="mt-2">{{ _('Analyzing image...') }}</p>
+                </div>
+                
+                <div id="results-content">
+                    <ul id="predictions-list" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div id="error-container" class="alert alert-danger d-none mt-3" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <span id="error-message"></span>
+        </div>
+    </div>
+</div>
+{% endblock %}
