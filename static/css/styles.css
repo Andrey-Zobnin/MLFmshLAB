@@ -1,0 +1,97 @@
+/* Custom styles for Image Recognition App */
+
+/* Upload container styling */
+.upload-container {
+    min-height: 200px;
+    border: 2px dashed var(--bs-secondary);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.upload-container:hover {
+    border-color: var(--bs-primary);
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.upload-container.drag-over {
+    border-color: var(--bs-success);
+    background-color: rgba(25, 135, 84, 0.05);
+}
+
+/* Image preview styling */
+#image-preview {
+    max-height: 300px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Predictions list styling */
+.prediction-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prediction-confidence {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.prediction-label {
+    flex-grow: 1;
+}
+
+.prediction-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.prediction-class {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Progress bar for confidence visualization */
+.confidence-bar {
+    height: 6px;
+    background-color: var(--bs-gray-700);
+    border-radius: 3px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.confidence-level {
+    height: 100%;
+    background-color: var(--bs-primary);
+    transition: width 0.5s ease;
+}
+
+/* Mobile responsiveness adjustments */
+@media (max-width: 576px) {
+    .upload-container {
+        min-height: 150px;
+    }
+    
+    #image-preview {
+        max-height: 200px;
+    }
+    
+    .prediction-confidence {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+    
+    .prediction-name {
+        font-size: 1rem;
+    }
+}
